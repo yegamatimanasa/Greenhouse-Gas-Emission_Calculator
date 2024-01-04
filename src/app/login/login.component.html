@@ -1,0 +1,42 @@
+<div class="container-fluid">
+  <div class="row justify-content-center">
+    <div class="text-center p-0 mt-3 mb-2 col-md-4 col-sm-6">
+      <div class="card px-0 pt-4 pb-0 mt-3 mb-3">
+        <h2 id="heading">Login</h2>
+        <form id="msform">
+          <fieldset>
+            <div class="form-card">
+              <label class="fieldlabels">Email:</label>
+              <input
+                type="email"
+                name="email"
+                placeholder="Email"
+                #email
+              />
+              
+              <label class="fieldlabels">Password:</label>
+              <input
+                type="password"
+                name="password"
+                placeholder="Password"
+                #password
+              />
+            </div>
+            <input
+              type="button"
+              name="login"
+              class="action-button icon"
+              value="Login"
+              (click)="submit(email.value,password.value)"
+            />
+            <div id="register-link" class="text-left">
+              <a href="/forgetuser" class="text-info">Forget Username?</a><br>
+              <a href="/forgetpassword" class="text-info">Forget Password?</a>
+
+          </div>
+          </fieldset>
+        </form>
+      </div>
+    </div>
+  </div>
+</div>

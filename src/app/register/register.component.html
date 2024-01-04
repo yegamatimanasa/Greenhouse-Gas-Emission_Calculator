@@ -1,0 +1,71 @@
+<div class="container-fluid">
+  <div class="row justify-content-center">
+    <div class="text-center p-0 mt-3 mb-2 col-md-4 col-sm-6">
+      <div class="card px-0 pt-4 pb-0 mt-3 mb-3">
+        <h2 id="heading">Register</h2>
+        <form id="msform">
+          <fieldset>
+            <div class="form-card">
+              <label class="fieldlabels">Email:</label>
+              <input
+                type="email"
+                name="email"
+                placeholder="Email"
+                #email
+              />
+              <label class="fieldlabels">User Name:</label>
+              <input
+                type="text"
+                name="text"
+                placeholder="Username"
+                #username
+              />
+              <label class="fieldlabels">Password:</label>
+              <input
+                type="password"
+                name="password"
+                placeholder="Password"
+                #password
+              />
+              <label class="fieldlabels">Confirm Password:</label>
+              <input
+                type="password"
+                name="password"
+                placeholder="Confirm Password"
+                #cpassword
+              />
+              <label class="fieldlabels">Company Name:</label>
+              <input
+                type="text"
+                name="cname"
+                placeholder="Company Name"
+                #cname
+              />
+              <label class="fieldlabels">Role:</label>
+              <input
+                type="text"
+                name="crole"
+                placeholder="Role"
+                #crole
+              />
+              <label class="fieldlabels">Phone Number:</label>
+              <input
+                type="tel"
+                name="cnum"
+                placeholder="Phone Number"
+                #cnum
+              />
+            </div>
+            <input
+              type="button"
+              name="register"
+              class="action-button icon"
+              value="Register"
+              (click)="submit(email.value,password.value)"
+            />
+          </fieldset>
+        </form>
+      </div>
+    </div>
+  </div>
+</div>

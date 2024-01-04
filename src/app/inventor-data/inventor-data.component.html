@@ -1,0 +1,59 @@
+<div class="container-fluid">
+    <div class="row justify-content-center">
+      <div class="col-11 col-sm-9 text-center p-0 mt-3 mb-2">
+        <div class="card px-0 pt-4 pb-0 mt-3 mb-3">
+          <h2 id="heading">Inventory Data Form</h2>
+          
+          <form id="msform">
+            <!-- fieldsets -->
+            <fieldset>
+              <div class="form-card">
+                
+                <label class="fieldlabels">Inventory Year: * </label>
+                <input
+                  type="number"
+                  name="inid"
+                  min="2000"
+                  placeholder="Inventory Year"
+                  #inventoryyear
+                />
+                <label class="fieldlabels">Start Date: *</label>
+                <input
+                  type="date"
+                  name="date" 
+                   placeholder="Start Date"
+                  #sdate
+                />
+                <label class="fieldlabels">End Date: *</label>
+                <input
+                  type="date"
+                  name="sdate"
+                  placeholder="End Date"
+                  #edate
+                />
+                <label class="fieldlabels">Exclusions: *</label>
+                <input
+                  type="text"
+                  name="exclusions"
+                  placeholder="Exclusions"
+                  #exclusions
+                />
+                
+              </div>
+              <input
+              type="button"
+              name="submit"
+              class="action-button icon"
+              value="Submit"
+              (click)="submit(inventoryyear.value,sdate.value,edate.value,exclusions.value)"
+            />
+             </fieldset>
+            
+          </form>
+        </div>
+      </div>
+    </div>
+  </div>
+  
+
+

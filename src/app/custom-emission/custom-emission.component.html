@@ -1,0 +1,108 @@
+<div class="container-fluid">
+    <div class="row justify-content-center">
+      <div class="col-11 col-sm-9 text-center p-0 mt-3 mb-2">
+        <div class="card px-0 pt-4 pb-0 mt-3 mb-3">
+          <h2 id="heading">Custom Emission Form</h2>
+          
+          <form id="msform">
+            <!-- fieldsets -->
+            <fieldset>
+              <div class="form-card">
+                
+                <label class="fieldlabels">Name of Custom Emission Factor: * </label>
+                <input
+                  type="text"
+                  name="cef"
+                  
+                  placeholder="Name of Custom Emission Factor"
+                  #cef
+                />
+                <label class="fieldlabels">Scope: *</label>
+                <input
+                  type="text"
+                  name="scope" 
+                   placeholder="Scope"
+                  #scope
+                />
+                <label class="fieldlabels">Activity Type: *</label>
+                <input
+                  type="text"
+                  name="activity type"
+                  placeholder="Activity Type"
+                  #at
+                />
+                <label class="fieldlabels">Source of Emission Factor: *</label>
+                <input
+                  type="text"
+                  name="sef"
+                  placeholder="Source of Emission Factor"
+                  #sef
+                />
+                <label class="fieldlabels">Fossil CO2: *</label>
+                <input
+                  type="number"
+                  name="fossile co2"
+                  placeholder="Fossil CO2"
+                  #fco2
+                />
+                <label class="fieldlabels">CH4: *</label>
+                <input
+                  type="number"
+                  name="CH4"
+                  placeholder="CH4"
+                  #CH4
+                />
+                <label class="fieldlabels">N2O: *</label>
+                <input
+                  type="number"
+                  name="N2O"
+                  placeholder="N2O"
+                  #N2O
+                />
+                <label class="fieldlabels">Bio Fuel CO2: *</label>
+                <input
+                  type="number"
+                  name="bfCO2"
+                  placeholder="Bio Fuel CO2"
+                  #bfCO2
+                />
+                <label class="fieldlabels">CO2e: *</label>
+                <input
+                  type="number"
+                  name="CO2e"
+                  placeholder="CO2e"
+                  #CO2e
+                />
+                <label class="fieldlabels">Unit of Emission Factors(Numerator): *</label>
+                <input
+                  type="text"
+                  name="nunit"
+                  placeholder="Unit of Emission Factors(Numerator)"
+                  #nunit
+                />
+                <label class="fieldlabels">Unit of Emission Factors(Denomirator): *</label>
+                <input
+                  type="text"
+                  name="dunit"
+                  placeholder="Unit of Emission Factors(Denomirator)"
+                  #dunit
+                />
+                
+                
+              </div>
+              <input
+              type="button"
+              name="submit"
+              class="action-button icon"
+              value="Submit"
+              (click)="submit()"
+             
+            />
+             </fieldset>
+            
+          </form>
+        </div>
+      </div>
+    </div>
+  </div>
+  

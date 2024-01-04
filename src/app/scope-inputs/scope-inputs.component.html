@@ -1,0 +1,554 @@
+<div class="container-fluid">
+  <div class="row justify-content-center">
+    <div class="col-11 col-sm-9 text-center p-0 mt-3 mb-2">
+      <div class="card px-0 pt-4 pb-0 mt-3 mb-3">
+        <h2 id="heading">Emission Data Form</h2>
+        <p>Fill all form field to go to next step</p>
+        <form id="msform" [formGroup]="ScopeForm" (ngSubmit)="submit()">
+          <!-- progressbar -->
+          <ul id="progressbar">
+            <li class="active" id="confirm">
+              <strong>Scope 1 - Stationary Combustion</strong>
+            </li>
+            <li id="confirm"><strong>Scope 1 - Mobile Combustion</strong></li>
+            <li id="confirm"><strong>Scope 1 - Refrigerants</strong></li>
+            <li id="confirm">
+              <strong>Scope 2 - Purchased Electricity</strong>
+            </li>
+            <li id="confirm"><strong>Scope 3 - Transportation</strong></li>
+            <li id="confirm"><strong>Submit</strong></li>
+          </ul>
+          <div class="progress">
+            <div
+              class="progress-bar progress-bar-striped progress-bar-animated"
+              role="progressbar"
+              aria-valuemin="0"
+              aria-valuemax="100"
+            ></div>
+          </div>
+          <br />
+          <!-- fieldsets -->
+          <fieldset formGroupName="S1Sc">
+            <div class="form-card">
+              <div class="row">
+                <div class="col-7">
+                  <h2 class="fs-title">Stationary Combustion:</h2>
+                </div>
+                <div class="col-5">
+                  <h2 class="steps">Step 1 - 6</h2>
+                </div>
+              </div>
+              <label class="fieldlabels">Facility ID: * </label>
+              <input
+                type="number"
+                formControlName="Fid"
+                min="1"
+                name="Fid"
+                placeholder="Facility Id"
+              />
+              <label class="fieldlabels">Year: *</label>
+              <input
+                type="number"
+                formControlName="Year"
+                name="Year"
+                min="2000"
+                placeholder="Year"
+              />
+              <!-- <div class="col-2">
+                <select class="custom-select">
+                  <option selected>Open this select menu</option>
+                  <option value="1">One</option>
+                  <option value="2">Two</option>
+                  <option value="3">Three</option>
+                </select>
+              </div> -->
+              <label class="fieldlabels" style="padding-right: 5%"
+                >Custom Emission Factors?:</label
+              >
+              <label class="switch">
+                <input type="checkbox" formControlName="Cef" />
+                <span class="slider round"></span>
+              </label>
+              <br />
+              <div *ngIf="ScopeForm.value.S1Sc.Cef">
+                <pre>{{ ScopeForm.value | json }}</pre>
+              </div>
+              <label class="fieldlabels">Fuel: *</label>
+              <input
+                type="text"
+                formControlName="Fuel"
+                name="Fuel"
+                placeholder="Fuel"
+              />
+              <label class="fieldlabels">Amount of fuel: *</label>
+              <input
+                type="text"
+                formControlName="AoF"
+                name="AoF"
+                placeholder="Amount of fuel"
+              />
+              <label class="fieldlabels">Units(e.g., kg or kWh): *</label>
+              <input
+                type="text"
+                formControlName="Unit"
+                name="Unit"
+                placeholder="Units(e.g., kg or kWh)"
+              />
+            </div>
+            <input
+              type="button"
+              name="next"
+              class="next action-button icon"
+              value="Next &#xf101;"
+            />
+          </fieldset>
+          <fieldset formGroupName="S1Mc">
+            <div class="form-card">
+              <div class="row">
+                <div class="col-7">
+                  <h2 class="fs-title">Mobile Combustion:</h2>
+                </div>
+                <div class="col-5">
+                  <h2 class="steps">Step 2 - 6</h2>
+                </div>
+              </div>
+              <label class="fieldlabels">Year: *</label>
+              <input
+                type="number"
+                min="2000"
+                formControlName="Year"
+                name="Year"
+                placeholder="Year"
+              />
+              <label class="fieldlabels">Description: </label>
+              <input
+                type="text"
+                formControlName="Desc"
+                name="Desc"
+                placeholder="Description"
+              />
+              <label class="fieldlabels">Facility ID: *</label>
+              <input
+                type="number"
+                min="1"
+                formControlName="Fid"
+                name="Fid"
+                placeholder="Facility ID"
+              />
+              <label class="fieldlabels">Activity Type: *</label>
+              <input
+                type="text"
+                formControlName="Atyp"
+                name="Atyp"
+                placeholder="Activity Type"
+              />
+              <label class="fieldlabels">Fuel Source: *</label>
+              <input
+                type="text"
+                formControlName="FS"
+                name="FS"
+                placeholder="Fuel Source"
+              />
+              <label class="fieldlabels">Vehicle Type: *</label>
+              <input
+                type="text"
+                formControlName="VT"
+                name="VT"
+                placeholder="Vehicle Type"
+              />
+              <label class="fieldlabels">Activity Amount: *</label>
+              <input
+                type="number"
+                min="0"
+                formControlName="ActAmt"
+                name="ActAmt"
+                placeholder="Activity Amount"
+              />
+              <label class="fieldlabels">Unit of Fuel Amount: *</label>
+              <input
+                type="text"
+                formControlName="UoF"
+                name="UoF"
+                placeholder="Unit of Fuel Amount"
+              />
+            </div>
+            <input
+              type="button"
+              name="next"
+              class="next action-button icon"
+              value="Next &#xf101;"
+            />
+            <input
+              type="button"
+              name="previous"
+              class="previous action-button-previous icon"
+              value="&#xf100; Back"
+            />
+          </fieldset>
+          <fieldset formGroupName="S1R">
+            <div class="form-card">
+              <div class="row">
+                <div class="col-7">
+                  <h2 class="fs-title">Refrigerants:</h2>
+                </div>
+                <div class="col-5">
+                  <h2 class="steps">Step 3 - 6</h2>
+                </div>
+              </div>
+              <label class="fieldlabels">Year: *</label>
+              <input
+                type="text"
+                formControlName="Year"
+                name="Year"
+                placeholder="Year"
+              />
+              <label class="fieldlabels">Facility ID: *</label>
+              <input
+                type="text"
+                formControlName="Fid"
+                name="Fid"
+                placeholder="Facility ID"
+              />
+              <label class="fieldlabels"
+                >Type of Air Conditioning and Refrigeration Equipment: *</label
+              >
+              <input
+                type="text"
+                formControlName="Type"
+                name="Type"
+                placeholder="Type of Air Conditioning and Refrigeration Equipment"
+              />
+              <label class="fieldlabels">Refrigerant Used: *</label>
+              <input
+                type="text"
+                formControlName="RefUsed"
+                name="RefUsed"
+                placeholder="Refrigerant Used"
+              />
+              <label class="fieldlabels"
+                >Refrigerant inventory (in storage, not equipment) at the
+                beginning of the year: *</label
+              >
+              <input
+                type="text"
+                formControlName="RIBeginYr"
+                name="RIBeginYr"
+                placeholder="Refrigerant inventory (in storage, not equipment) at the beginning of the year"
+              />
+              <label class="fieldlabels"
+                >Refrigerant inventory (in storage, not equipment) at the end of
+                the year: *</label
+              >
+              <input
+                type="text"
+                formControlName="RIEndYr"
+                name="RIEndYr"
+                placeholder="Refrigerant inventory (in storage, not equipment) at the end of the year"
+              />
+              <label class="fieldlabels"
+                >Refrigerant purchased from producers/ distributors: *</label
+              >
+              <input
+                type="text"
+                formControlName="RPur"
+                name="RPur"
+                placeholder="Refrigerant purchased from producers/ distributors"
+              />
+              <label class="fieldlabels"
+                >Refrigerant returned by equipment users: *</label
+              >
+              <input
+                type="text"
+                formControlName="RRUsr"
+                name="RRUsr"
+                placeholder="Refrigerant returned by equipment users"
+              />
+              <label class="fieldlabels"
+                >Refrigerant returned after off-site recycling or reclamation:
+                *</label
+              >
+              <input
+                type="text"
+                formControlName="RROff"
+                name="RROff"
+                placeholder="Refrigerant returned after off-site recycling or reclamation"
+              />
+              <label class="fieldlabels"
+                >Refrigerant charged into equipment* If not known, see steps A1
+                to A4 for a default value: *</label
+              >
+              <input
+                type="text"
+                formControlName="RCE"
+                name="RCE"
+                placeholder="Refrigerant charged into equipment* If not known, see steps A1 to A4 for a default value"
+              />
+              <label class="fieldlabels"
+                >Refrigerant delivered to equipment users in containers:
+                *</label
+              >
+              <input
+                type="text"
+                formControlName="RDC"
+                name="RRPro"
+                placeholder="Refrigerant delivered to equipment users in containers"
+              />
+              <label class="fieldlabels"
+                >Refrigerant returned to refrigerant producers: *</label
+              >
+              <input
+                type="text"
+                formControlName="RRPro"
+                name="RRPro"
+                placeholder="Refrigerant returned to refrigerant producers"
+              />
+              <label class="fieldlabels"
+                >Refrigerant sent off-site for recycling or reclamation:
+                *</label
+              >
+              <input
+                type="text"
+                formControlName="RSOff"
+                name="RSOff"
+                placeholder="Refrigerant sent off-site for recycling or reclamation"
+              />
+              <label class="fieldlabels"
+                >Refrigerant sent off-site for destruction: *</label
+              >
+              <input
+                type="text"
+                formControlName="NCpty"
+                name="NCpty"
+                placeholder="Refrigerant sent off-site for destruction"
+              />
+              <label class="fieldlabels"
+                >Density or Pressure of partical charge: *</label
+              >
+              <input
+                type="text"
+                formControlName="DPPartChrg"
+                name="DPPartChrg"
+                placeholder="Density or Pressure of partical charge"
+              />
+              <label class="fieldlabels"
+                >Density or Pressure of full charge: *</label
+              >
+              <input
+                type="text"
+                formControlName="DPFullChrg"
+                name="DPFullChrg"
+                placeholder="Density or Pressure of full charge"
+              />
+            </div>
+            <input
+              type="button"
+              name="next"
+              class="next action-button icon"
+              value="Next &#xf101;"
+            />
+            <input
+              type="button"
+              name="previous"
+              class="previous action-button-previous icon"
+              value="&#xf100; Back"
+            />
+          </fieldset>
+          <fieldset formGroupName="S2Pe">
+            <div class="form-card">
+              <div class="row">
+                <div class="col-7">
+                  <h2 class="fs-title">Purchased Electricity:</h2>
+                </div>
+                <div class="col-5">
+                  <h2 class="steps">Step 4 - 6</h2>
+                </div>
+              </div>
+              <label class="fieldlabels">Year: *</label>
+              <input
+                type="text"
+                formControlName="Year"
+                name="Year"
+                placeholder="Year"
+              />
+              <label class="fieldlabels">Facility ID: *</label>
+              <input
+                type="text"
+                formControlName="Fid"
+                name="Facility ID"
+                placeholder="Fid"
+              />
+              <label class="fieldlabels"
+                >Amount of Electricity Consumption: *</label
+              >
+              <input
+                type="text"
+                formControlName="AmtEc"
+                name="AmtEc"
+                placeholder="Amount of Electricity Consumption"
+              />
+              <label class="fieldlabels">Units: *</label>
+              <input
+                type="text"
+                formControlName="Unit"
+                name="Unit"
+                placeholder="Units"
+              />
+              <label class="fieldlabels">Calculation Approach: *</label>
+              <input
+                type="text"
+                formControlName="CalAppr"
+                name="CalAppr"
+                placeholder="Calculation Approach"
+              />
+              <label class="fieldlabels">Type of Emission Factor: *</label>
+              <input
+                type="text"
+                formControlName="Type"
+                name="Type"
+                placeholder="Type of Emission Factor"
+              />
+              <label class="fieldlabels">Custom Emission Factor: *</label>
+              <input
+                type="text"
+                formControlName="Cef"
+                name="Cef"
+                placeholder="Custom Emission Factor"
+              />
+            </div>
+            <input
+              type="button"
+              name="next"
+              class="next action-button icon"
+              value="Next &#xf101;"
+            />
+            <input
+              type="button"
+              name="previous"
+              class="previous action-button-previous icon"
+              value="&#xf100; Back"
+            />
+          </fieldset>
+          <fieldset formGroupName="S3T">
+            <div class="form-card">
+              <div class="row">
+                <div class="col-7">
+                  <h2 class="fs-title">Transportation:</h2>
+                </div>
+                <div class="col-5">
+                  <h2 class="steps">Step 5 - 6</h2>
+                </div>
+              </div>
+              <label class="fieldlabels">Year: *</label>
+              <input
+                type="text"
+                formControlName="Year"
+                name="Year"
+                placeholder="Year"
+              />
+              <label class="fieldlabels">Description: *</label>
+              <input
+                type="text"
+                formControlName="Desc"
+                name="Desc"
+                placeholder="Description"
+              />
+              <label class="fieldlabels">Category: *</label>
+              <input
+                type="text"
+                formControlName="Cat"
+                name="Cat"
+                placeholder="Category"
+              />
+              <label class="fieldlabels">Emission Factor Dataset: *</label>
+              <input
+                type="text"
+                formControlName="Ef"
+                name="Ef"
+                placeholder="Emission Factor Dataset"
+              />
+              <label class="fieldlabels">Mode of Transport: *</label>
+              <input
+                type="text"
+                formControlName="MoT"
+                name="MoT"
+                placeholder="Mode of Transport"
+              />
+              <label class="fieldlabels">Activity Type: *</label>
+              <input
+                type="text"
+                formControlName="ActType"
+                name="ActType"
+                placeholder="Activity Type"
+              />
+              <label class="fieldlabels">Vehicle Type: *</label>
+              <input
+                type="text"
+                formControlName="VType"
+                name="VType"
+                placeholder="Vehicle Type"
+              />
+              <label class="fieldlabels">Amount of Activity Type: *</label>
+              <input
+                type="text"
+                formControlName="AmtAct"
+                name="AmtAct"
+                placeholder="Amount of Activity Type"
+              />
+              <label class="fieldlabels">Units of Measurement: *</label>
+              <input
+                type="text"
+                formControlName="Unit"
+                name="Unit"
+                placeholder="Units of Measurement"
+              />
+            </div>
+            <input
+              type="submit"
+              name="next"
+              class="next action-button icon"
+              value="Submit &#xf101;"
+            />
+            <input
+              type="button"
+              name="previous"
+              class="previous action-button-previous icon"
+              value="&#xf100; Back"
+            />
+          </fieldset>
+          <fieldset>
+            <div class="form-card">
+              <div class="row">
+                <div class="col-7">
+                  <h2 class="fs-title">Finish:</h2>
+                </div>
+                <div class="col-5">
+                  <h2 class="steps">Step 6 - 6</h2>
+                </div>
+              </div>
+              <br /><br />
+              <h2 class="purple-text text-center">
+                <strong>SUCCESS !</strong>
+              </h2>
+              <br />
+              <div class="row justify-content-center">
+                <div>
+                  <i class="fa-regular fa-thumbs-up fa-5x" style="color: var(--accent-color); align-items: center"></i>
+                </div>
+              </div>
+              <br /><br />
+              <div class="row justify-content-center">
+                <div class="col-7 text-center">
+                  <h5 class="purple-text text-center">
+                    You Have Successfully Added You Entry
+                  </h5>
+                  <input type="button" class="action-button" style="float: none;" value="Home" onclick="window.location='/home';"/>
+                </div>
+                
+              </div>
+            </div>
+          </fieldset>
+        </form>
+      </div>
+    </div>
+  </div>
+</div>

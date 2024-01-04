@@ -1,0 +1,31 @@
+<div class="container-fluid">
+    <div class="row justify-content-center">
+      <div class="text-center p-0 mt-3 mb-2 col-md-4 col-sm-6">
+        <div class="card px-0 pt-4 pb-0 mt-3 mb-3">
+          <h2 id="heading">Forget Username</h2>
+          <form id="msform">
+            <fieldset>
+              <div class="form-card">
+                <label class="fieldlabels">Email:</label>
+                <input
+                  type="email"
+                  name="email"
+                  placeholder="Email"
+                  #email
+                /> 
+              </div>
+              <input
+                type="button"
+                name="confirm"
+                class="action-button icon"
+                value="Confirm"
+                (click)="confirm(email.value)"
+              />
+            </fieldset>
+          </form>
+        </div>
+      </div>
+    </div>
+  </div>
+  
+
